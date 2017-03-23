@@ -18,12 +18,7 @@ namespace HelloXamarinForms.View
         public MainPage()
         {
             InitializeComponent();
-            Task.Run(() => NavigateToListMovies());
-        }
-
-        async Task OnNavigateToListMovies(object sender, EventArgs args)
-        {
-            await NavigateToListMovies();
+            Task.Run(() => NavigateToListMovies()).Wait();
         }
 
         async Task NavigateToListMovies()

@@ -3,28 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloXamarinForms.View.MainPage">
   <StackLayout>
-    <!--<Label Text="Enter the url"
-           Font="Large"
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    <Entry x:Name="urlEntry" Text="https://xamathonhu.azurewebsites.net/" />
-    <Label x:Name="testLabel"
-       Text="Enter the table name"
-       Font="Large"
-       HorizontalOptions="Center"
-       VerticalOptions="CenterAndExpand" />
-    <Entry x:Name="tableEntry" Text="TodoItem" />
-    <Button x:Name="testButton"
-            Text="Connect..."
+    <Label  Text="Loading..."
             HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            Clicked="OnButtonClicked" />-->
-    <Button x:Name="moviesButton"
-            Text="View movies..."
-            HorizontalOptions="Center"
-            VerticalOptions="CenterAndExpand"
-            Clicked="OnNavigateToListMovies" />
-
+            VerticalOptions="CenterAndExpand" />
   </StackLayout>
 
 </ContentPage>
