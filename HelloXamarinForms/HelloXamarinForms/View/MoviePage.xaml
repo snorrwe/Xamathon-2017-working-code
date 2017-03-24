@@ -4,9 +4,9 @@
              x:Class="HelloXamarinForms.View.MoviePage">
   <ContentPage.Content>
     <ScrollView>
-      <Grid RowSpacing="2" ColumnSpacing="2">
+      <Grid RowSpacing="2" ColumnSpacing="2" Padding="15,0,15,0">
         <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
+          <RowDefinition Height="3*" />
           <RowDefinition Height="Auto" />
           <RowDefinition Height="*" />
           <RowDefinition Height="*" />
@@ -17,8 +17,8 @@
           <ColumnDefinition Width="*" />
           <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Image  x:Name="movieImage" Grid.Row="0" Grid.Column="0" />
-        <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="15"/>
+        <Image  x:Name="movieImage" Grid.Row="0" Grid.Column="0" Aspect="AspectFit"/>
+        <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="20"/>
         <Label x:Name="descriptionLabel" Grid.Row="1" Grid.ColumnSpan="2" VerticalTextAlignment="Center"/>
         <Label Text="Movie released:" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
         <Label x:Name="releasedLabel" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
