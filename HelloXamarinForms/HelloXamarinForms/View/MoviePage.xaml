@@ -2,9 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloXamarinForms.View.MoviePage">
-  
-  <Label x:Name="testLabel"
-       Font="Large"
-       HorizontalOptions="Center"
-       VerticalOptions="CenterAndExpand" />
+  <StackLayout>
+    <Button Text="Back" Clicked="OnBackClick"
+          HorizontalOptions="Start"
+       VerticalOptions="Start" />
+    <Button Text="Check the movie on imdb"
+            Clicked="OnToBroswerClicked"            
+          HorizontalOptions="Start"/>
+    <Image  x:Name="movieImage" HorizontalOptions="Start"/>
+    <TableView Intent="Data">
+      <TableRoot>
+        <TableSection Title="Title:">
+          <TextCell x:Name="titleLabel"/>
+        </TableSection>
+        <TableSection Title="Description:">
+          <TextCell x:Name="descriptionLabel" />
+        </TableSection>
+        <TableSection Title="Released:">
+          <TextCell x:Name="releasedLabel" />
+        </TableSection>
+        <TableSection Title="Post Created:">
+          <TextCell x:Name="createdLabel" />
+        </TableSection>
+        <TableSection Title="Last updated:">
+          <TextCell x:Name="updatedLabel"/>
+        </TableSection>
+      </TableRoot>
+    </TableView>
+  </StackLayout>
 </ContentPage>
