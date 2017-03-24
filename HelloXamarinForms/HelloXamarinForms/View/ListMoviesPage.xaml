@@ -4,16 +4,31 @@
              x:Class="HelloXamarinForms.View.ListMoviesPage">
 
   <ContentPage.Content>
-    <StackLayout>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <!--<ColumnDefinition Width="Auto" />-->
+      </Grid.ColumnDefinitions>
       <Entry x:Name="searchInput"
              Placeholder="Search..."
-             HorizontalOptions="Fill"/>
-      <Button x:Name="searchButton" 
+             HorizontalOptions="Fill"
+             Grid.Row="0"
+             Grid.ColumnSpan ="3"
+             Grid.Column="0"/>
+      <Button x:Name="searchButton"
               Text="Search"
-              Clicked="OnSearchClick"/>
+              Clicked="OnSearchClick"
+              Grid.Row ="0"
+              Grid.Column="3"/>
       <TableView x:Name="table"
                  HorizontalOptions="Fill"
-                 VerticalOptions="Center"></TableView>
-    </StackLayout>
+                 VerticalOptions="Center"
+                 Grid.Row ="1"
+                 Grid.ColumnSpan ="4">
+      </TableView>
+    </Grid>
   </ContentPage.Content>
 </ContentPage>

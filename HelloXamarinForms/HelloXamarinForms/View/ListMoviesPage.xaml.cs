@@ -56,12 +56,14 @@ namespace HelloXamarinForms.View
         ImageCell GetImageCellByMovie(Movie movie)
         {
             var imgSrc = ImageSource.FromUri(new Uri(movie.PosterUrl));
+            var description = movie.Description;
+            description += "\n\nRelease date: " + movie.ReleaseYeasr;
             var result = new ImageCell
             {
                 // Some differences with loading images in initial release.
                 ImageSource = Device.OnPlatform(imgSrc, imgSrc, imgSrc),
                 Text = movie.Title,
-                Detail = movie.Description,
+                Detail = description,
                 Command = new Command(() => OnMovieItemClick(movie))
             };
             return result;
