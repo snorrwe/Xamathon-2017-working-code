@@ -23,17 +23,16 @@ namespace HelloXamarinForms.View
 
         private void SetMovieData()
         {
-            var cell = this.FindByName<TextCell>("titleLabel");
-            cell.Text = selectedMovie.Title;
-            cell = this.FindByName<TextCell>("descriptionLabel");
-            cell.Text = selectedMovie.Description;
-            cell = this.FindByName<TextCell>("releasedLabel");
-            cell.Text = selectedMovie.ReleaseYeasr.ToString();
-            cell = this.FindByName<TextCell>("createdLabel");
-            cell.Text = selectedMovie.CreatedAt.ToString();
-            cell = this.FindByName<TextCell>("updatedLabel");
-            cell.Text = selectedMovie.UpdatedAt.ToString();
-            cell = this.FindByName<ImageCell>("imageCell");
+            var label = this.FindByName<Label>("titleLabel");
+            label.Text = selectedMovie.Title;
+            label = this.FindByName<Label>("descriptionLabel");
+            label.Text = selectedMovie.Description;
+            label = this.FindByName<Label>("releasedLabel");
+            label.Text = selectedMovie.ReleaseYeasr.ToString();
+            label = this.FindByName<Label>("createdLabel");
+            label.Text = selectedMovie.CreatedAt.ToString();
+            label = this.FindByName<Label>("updatedLabel");
+            label.Text = selectedMovie.UpdatedAt.ToString();            
             var image = this.FindByName<Image>("movieImage");
             image.Source = selectedMovie.PosterUrl;
         }

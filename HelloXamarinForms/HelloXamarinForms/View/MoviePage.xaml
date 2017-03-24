@@ -2,32 +2,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloXamarinForms.View.MoviePage">
-  <StackLayout>
-    <Button Text="Back" Clicked="OnBackClick"
-          HorizontalOptions="Start"
-       VerticalOptions="Start" />
-    <Button Text="Check the movie on imdb"
-            Clicked="OnToBroswerClicked"            
-          HorizontalOptions="Start"/>
-    <Image  x:Name="movieImage" HorizontalOptions="Start"/>
-    <TableView Intent="Data">
-      <TableRoot>
-        <TableSection Title="Title:">
-          <TextCell x:Name="titleLabel"/>
-        </TableSection>
-        <TableSection Title="Description:">
-          <TextCell x:Name="descriptionLabel" />
-        </TableSection>
-        <TableSection Title="Released:">
-          <TextCell x:Name="releasedLabel" />
-        </TableSection>
-        <TableSection Title="Post Created:">
-          <TextCell x:Name="createdLabel" />
-        </TableSection>
-        <TableSection Title="Last updated:">
-          <TextCell x:Name="updatedLabel"/>
-        </TableSection>
-      </TableRoot>
-    </TableView>
-  </StackLayout>
+  <ContentPage.Content>
+    <ScrollView>
+      <Grid RowSpacing="2" ColumnSpacing="2">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image  x:Name="movieImage" Grid.Row="0" Grid.Column="0" />
+        <Label x:Name="titleLabel" Grid.Row="0" Grid.Column="1"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="15"/>
+        <Label x:Name="descriptionLabel" Grid.Row="1" Grid.ColumnSpan="2" VerticalTextAlignment="Center"/>
+        <Label Text="Movie released:" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+        <Label x:Name="releasedLabel" Grid.Row="2" Grid.Column="1" VerticalTextAlignment="Center"/>
+        <Label Text="Created: "  Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center"/>
+        <Label x:Name="createdLabel"  Grid.Row="3" Grid.Column="1" VerticalTextAlignment="Center"/>
+        <Label Text="Last updated:" Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center"/>
+        <Label x:Name="updatedLabel" Grid.Row="4" Grid.Column="1" VerticalTextAlignment="Center"/>
+        <Button Text="Back to the movies" Clicked="OnBackClick" Grid.Row="5" Grid.Column="0" />
+        <Button Text="Check the movie on imdb" Clicked="OnToBroswerClicked" Grid.Row="5" Grid.Column="1" />
+      </Grid>
+    </ScrollView>
+  </ContentPage.Content>
 </ContentPage>
