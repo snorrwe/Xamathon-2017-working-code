@@ -29,7 +29,7 @@ namespace HelloXamarinForms.View
                 movies = MovieManager.instance.movies;
                 Init();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }
@@ -65,11 +65,6 @@ namespace HelloXamarinForms.View
                 Command = new Command(() => OnMovieItemClick(movie))
             };
             return result;
-        }
-
-        async void OnBackClicked(object sender, EventArgs args)
-        {
-            await Navigation.PushAsync(new MainPage());
         }
 
         async void OnSearchClick(object sender, EventArgs args)
