@@ -3,21 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HelloXamarinForms.View.ListMoviesPage">
 
-  <!--<ListView x:Name="list">
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ImageCell
-            Text="{Binding Name}"
-            Detail="{Binding Position, StringFormat='{0}'}"
-            ImageSource="{Binding Image}">
-        </ImageCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-  </ListView>-->
-
-  <Button x:Name="backButton"
-           Text="Back"
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand"
-           Clicked="OnBackClicked" />
+  <ContentPage.Content>
+    <StackLayout>
+      <Entry x:Name="searchInput"
+             Placeholder="Search..."
+             HorizontalOptions="Fill"/>
+      <Button x:Name="searchButton" 
+              Text="Search"
+              Clicked="OnSearchClick"/>
+      <TableView x:Name="table"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Center"></TableView>
+    </StackLayout>
+  </ContentPage.Content>
 </ContentPage>

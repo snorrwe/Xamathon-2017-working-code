@@ -14,15 +14,30 @@ namespace HelloXamarinForms.View
     {
         IEnumerable<Movie> movies;
 
+        public ListMoviesPage(IEnumerable<Movie> movies)
+        {
+            this.InitializeComponent();
+            this.movies = movies;
+            Init();
+        }
+
         public ListMoviesPage()
         {
-            InitializeComponent();
-            movies = MovieManager.instance.movies;
-            var tableView = new TableView
+            try
             {
-                Intent = TableIntent.Form,
-                Root = new TableRoot()
-            };
+                this.InitializeComponent();
+                movies = MovieManager.instance.movies;
+                Init();
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        void Init()
+        {
+            var tableView = this.FindByName<TableView>("table");
 
             foreach (var movie in movies)
             {
@@ -31,14 +46,6 @@ namespace HelloXamarinForms.View
 
                 tableView.Root.Add(section);
             }
-
-            Content = new StackLayout
-            {
-                Children =
-                {
-                    tableView
-                }
-            };
         }
 
         async void OnMovieItemClick(Movie movie)
@@ -65,6 +72,17 @@ namespace HelloXamarinForms.View
         async void OnBackClicked(object sender, EventArgs args)
         {
             await Navigation.PushAsync(new MainPage());
+        }
+
+        async void OnSearchClick(object sender, EventArgs args)
+        {
+            var input = this.FindByName<Entry>("searchInput").Text;
+            var movies = MovieManager.instance.movies;
+            if (!string.IsNullOrWhiteSpace(input))
+            {
+                movies = movies.Where(i => i.Title.ToLower().Contains(input.ToLower()));
+            }
+            await Navigation.PushAsync(new ListMoviesPage(movies));
         }
     }
 }
