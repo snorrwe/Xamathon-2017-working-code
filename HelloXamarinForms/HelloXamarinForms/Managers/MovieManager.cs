@@ -17,7 +17,12 @@ namespace HelloXamarinForms.Managers
 
         private MovieManager()
         {
-            movies = null;
+        }
+
+        public IEnumerable<Movie> GetMoviesByTitle(string title)
+        {
+            var result = movies.Where(i => i.Title.ToLower().Contains(title.ToLower()));
+            return result;
         }
     }
 }

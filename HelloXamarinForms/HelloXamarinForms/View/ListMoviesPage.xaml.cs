@@ -38,7 +38,7 @@ namespace HelloXamarinForms.View
         void Init()
         {
             var tableView = this.FindByName<TableView>("table");
-
+            tableView.Root.Clear();
             foreach (var movie in movies)
             {
                 var cell = GetImageCellByMovie(movie);
@@ -55,13 +55,11 @@ namespace HelloXamarinForms.View
 
         ImageCell GetImageCellByMovie(Movie movie)
         {
-
+            var imgSrc = ImageSource.FromUri(new Uri(movie.PosterUrl));
             var result = new ImageCell
             {
                 // Some differences with loading images in initial release.
-                ImageSource = Device.OnPlatform(ImageSource.FromUri(new Uri(movie.PosterUrl)),
-                                                  ImageSource.FromUri(new Uri(movie.PosterUrl)),
-                                                  ImageSource.FromUri(new Uri(movie.PosterUrl))),
+                ImageSource = Device.OnPlatform(imgSrc, imgSrc, imgSrc),
                 Text = movie.Title,
                 Detail = movie.Description,
                 Command = new Command(() => OnMovieItemClick(movie))
@@ -77,12 +75,8 @@ namespace HelloXamarinForms.View
         async void OnSearchClick(object sender, EventArgs args)
         {
             var input = this.FindByName<Entry>("searchInput").Text;
-            var movies = MovieManager.instance.movies;
-            if (!string.IsNullOrWhiteSpace(input))
-            {
-                movies = movies.Where(i => i.Title.ToLower().Contains(input.ToLower()));
-            }
-            await Navigation.PushAsync(new ListMoviesPage(movies));
+            movies = MovieManager.instance.GetMoviesByTitle(input);
+            Init();
         }
     }
 }
