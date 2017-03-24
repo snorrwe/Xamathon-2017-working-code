@@ -23,19 +23,35 @@ namespace HelloXamarinForms.View
 
         async Task NavigateToListMovies()
         {
-            if (MovieManager.instance.movies == null)
+            try
             {
-                var client = new MobileServiceClient(apiUrl);
-                var movieTable = client.GetTable<Movie>();
-                var tableResult = await GetAllData(movieTable);
-                MovieManager.instance.movies = tableResult;
+                if (MovieManager.instance.movies == null)
+                {
+                    var client = new MobileServiceClient(apiUrl);
+                    var movieTable = client.GetTable<Movie>();
+                    var tableResult = await GetAllData(movieTable);
+                    MovieManager.instance.movies = tableResult;
+                }
+                await Navigation.PushAsync(new ListMoviesPage());
             }
-            await Navigation.PushAsync(new ListMoviesPage());
+            catch(System.Net.Http.HttpRequestException)
+            {
+                OnNoInternet();
+            }
+            catch(Exception)
+            {
+                throw;
+            }
         }
 
-        void OnButtonClicked(object sender, EventArgs args)
+        void OnNoInternet()
         {
+            this.FindByName<Label>("centerLabel").Text = "No internet connection";
+        }
 
+        async void OnButtonClicked(object sender, EventArgs args)
+        {
+            await NavigateToListMovies();
         }
 
         private async Task<List<Movie>> GetAllData(IMobileServiceTable<Movie> table)

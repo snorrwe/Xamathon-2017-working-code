@@ -4,9 +4,13 @@
              x:Class="HelloXamarinForms.View.MainPage">
   
   <StackLayout>
-    <Label  Text="Loading..."
+    <Label  x:Name="centerLabel"
+            Text="Loading..."
             HorizontalOptions="Center"
             VerticalOptions="CenterAndExpand" />
+    <Button Clicked="OnButtonClicked"
+            Text="Retry"
+            />
   </StackLayout>
 
 </ContentPage>

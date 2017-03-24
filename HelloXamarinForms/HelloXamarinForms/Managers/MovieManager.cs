@@ -12,7 +12,6 @@ namespace HelloXamarinForms.Managers
         static Lazy<MovieManager> _instance = new Lazy<MovieManager>(() => new MovieManager());
         public static MovieManager instance { get { return _instance.Value; } }
 
-
         public IEnumerable<Movie> movies { get; set; }
 
         private MovieManager()
@@ -21,6 +20,10 @@ namespace HelloXamarinForms.Managers
 
         public IEnumerable<Movie> GetMoviesByTitle(string title)
         {
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                title = "";
+            }
             var result = movies.Where(i => i.Title.ToLower().Contains(title.ToLower()));
             return result;
         }
